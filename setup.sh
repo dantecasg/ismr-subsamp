@@ -22,9 +22,10 @@ mkdir data/mask
 cd proc/
 
 # Download data that is not available in the server
-ruta="/work/uo1075/b381534/data/masks"
-cp $ruta/india_mask_GPCP.nc data/mask/
-cp $ruta/india_mask_MR30.nc data/mask/
+ruta="/work/uo1075/b381534/data"
+cp $ruta/masks/india_mask_GPCP.nc ../data/mask/
+cp $ruta/masks/india_mask_MR30.nc ../data/mask/
+cp $ruta/GPCP/GPCP__V2_3__PRECIP__2.5x2.5_sel.nc ../data/prec/
 
 # Precipitation time series
 ./prec_ts.sh obs month

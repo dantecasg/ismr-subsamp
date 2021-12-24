@@ -22,13 +22,13 @@ area="20,120,-20,50"
 case $1 in
     obs) # Observed data
         data=${ruta}"/prec/GPCP__V2_3__PRECIP__2.5x2.5_sel.nc"
-        mask=${ruta}"/masks/india_mask_GPCP.nc"
+        mask=${ruta}"/mask/india_mask_GPCP.nc"
         outpre=${ruta}"/prec/gpcp-obs_pre"
         ;;
 
     asm) # Assimilated data
         data="/work/uo1075/u241265/post_defense/monsson_subsampling/MR30_assimilation/dante/asOEffESIP_r1i1p1-MR_echam6_echam_precip_mm_1980_2017.nc"
-        mask=${ruta}"/masks/india_mask_MR30.nc"
+        mask=${ruta}"/mask/india_mask_MR30.nc"
         outpre=${ruta}"/prec/mpi-echam-asm_pre"
         ;;
 
