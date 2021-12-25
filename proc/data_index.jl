@@ -28,15 +28,16 @@ include("funcs_index.jl")
 # =========================================================================== #
 
 # General parametersDMI
-datapath = "../../data/"
-idx = "atl"
+datapath = "../data/"
+idx = ARGS[1]
+# idx = "oni"
 
 # Data sources
 if idx != "wyi"
-    obs_src = idx == "oni" ? "SST/noaa-oisst_sst_1982-2021-mon.nc" : "SST/hadisst_sst_1981-2016-mon.nc"
+    obs_src = idx == "oni" ? "sst/noaa-oisst_sst_1982-2021-mon.nc" : "sst/hadisst_sst_1981-2016-mon.nc"
     fil_obs = Dataset(datapath * obs_src);
-    fil_asm = Dataset(datapath * "SST/mpi-om-asm_sst_1981-2016-mon.nc");
-    fil_mem = Dataset(datapath * "SST/mpi-om-ens_sst_1981-2016-mon.nc");
+    fil_asm = Dataset(datapath * "sst/mpi-om-asm_sst_1981-2016-mon.nc");
+    fil_mem = Dataset(datapath * "sst/mpi-om-ens_sst_1981-2016-mon.nc");
     var = "sst"
     lon_name = "lon"
     lat_name = "lat"

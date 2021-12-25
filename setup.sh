@@ -47,3 +47,9 @@ cp $ruta"/wind/era5_uwind_1981-2016_lev-200-850.nc" "../data/wind/"
 ./wind.sh era5
 ./wind.sh asmmon
 ./wind.sh ens
+
+# Calculate indexes
+julia data_index.jl oni
+julia data_index.jl dmi
+julia data_index.jl wio
+julia data_index.jl wyi
