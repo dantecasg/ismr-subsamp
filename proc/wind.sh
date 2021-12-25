@@ -81,8 +81,8 @@ case $1 in
 
     ens) # Ensemble
         data="/work/uo1075/u241265/post_defense/monsson_subsampling/MR30_hindcast/dante/echam_uwind_mm_hcassimbt_r1-30_r1i1p1-MR_1980_2017.nc"
-        out1=${ruta}echam6-mem_uwind_1981-2016-mon_lev-850_crop.nc
-        out2=${ruta}echam6-mem_uwind_1981-2016-mon_lev-200_crop.nc
+        out1=${ruta}"/echam6-mem_uwind_1981-2016-mon_lev-850_crop.nc"
+        out2=${ruta}"/echam6-mem_uwind_1981-2016-mon_lev-200_crop.nc"
         
         ncks -O -d lev,1 -F ${data} temp_lev1.nc
         ncks -O -d lev,2 -F ${data} temp_lev2.nc
