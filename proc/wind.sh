@@ -68,8 +68,8 @@ case $1 in
 
     asmmon)
         data="/work/uo1075/u241265/post_defense/monsson_subsampling/MR30_assimilation/dante/asOEffESIP_r1i1p1-MR_echam6_echam_uv_1980_2017.nc"
-        out1="echam6-asm_uwind_1981-2016-mon_lev-200.nc"
-        out2="echam6-asm_uwind_1981-2016-mon_lev-850.nc"
+        out1=${ruta}"/echam6-asm_uwind_1981-2016-mon_lev-200.nc"
+        out2=${ruta}"/echam6-asm_uwind_1981-2016-mon_lev-850.nc"
         
         cdo --reduce_dim -remapbil,r180x90 -monmean -selyear,1981/2016 -chname,var131,uwind -selname,var131 ${data} temp.nc
         ncks -O -d plev,1 -F temp.nc ${out1}
