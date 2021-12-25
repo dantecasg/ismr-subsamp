@@ -34,7 +34,7 @@ idx = ARGS[1]
 
 # Data sources
 if idx != "wyi"
-    obs_src = idx == "oni" ? "sst/noaa-oisst_sst_1982-2021-mon.nc" : "sst/hadisst_sst_1981-2016-mon.nc"
+    obs_src = idx == "oni" ? "sst/noaa-oisst_sst_1982-2021-mon.nc" : "sst/hadisst-obs_sst_1981-2016-mon.nc"
     fil_obs = Dataset(datapath * obs_src);
     fil_asm = Dataset(datapath * "sst/mpi-om-asm_sst_1981-2016-mon.nc");
     fil_mem = Dataset(datapath * "sst/mpi-om-ens_sst_1981-2016-mon.nc");
