@@ -49,7 +49,8 @@ cp $ruta"/wind/era5_uwind_1981-2016_lev-200-850.nc" "../data/wind/"
 ./wind.sh ens
 
 # Calculate indexes
-julia data_index.jl oni
-julia data_index.jl dmi
-julia data_index.jl wio
-julia data_index.jl wyi
+cd ../
+julia --project=. proc/data_index.jl oni
+julia --project=. proc/data_index.jl dmi
+julia --project=. proc/data_index.jl wio
+julia --project=. proc/data_index.jl wyi

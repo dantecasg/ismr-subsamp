@@ -19,9 +19,9 @@ using CSV
 # FUNCIONES
 # =========================================================================== #
 
-include("funcs_nc.jl")
-include("funcs_stat.jl")
-include("funcs_index.jl")
+include("../src/funcs_nc.jl")
+include("../src/funcs_stat.jl")
+include("../src/funcs_index.jl")
 
 # =========================================================================== #
 # PROCESSING
