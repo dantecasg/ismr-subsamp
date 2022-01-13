@@ -59,13 +59,13 @@ def detrend(x):
 # PROCESS
 # --------------------------------------------------------------------------- #
 
-datapath = "../../../data/"
+datapath = "../data/"
 
 # --------------------------------------------------------------------------- #
 # Data
 
 # Load data
-data_sst = xr.load_dataset(datapath+"SST/noaa-ersstv5_sst_1854-2021-mon_2p5.nc")
+data_sst = xr.load_dataset(datapath+"sst/noaa-ersstv5_sst_1854-2021-mon_2p5.nc")
 data_uwd = xr.load_dataset(datapath+"wind/ncep-ncar_uwind_1948-2021-mon_10m.nc")
 data_vwd = xr.load_dataset(datapath+"wind/ncep-ncar_vwind_1948-2021-mon_10m.nc")
 
@@ -208,5 +208,5 @@ df = pd.DataFrame({
     "time" : sst_fin["time"].values,
     "amm"  : sst_mca_nor,
 })
-df.to_csv(r'../../../data/index/amm-obs_1981-2016-mon.csv', index = False)
+df.to_csv(r'../data/index/amm-obs_1981-2016-mon.csv', index = False)
 

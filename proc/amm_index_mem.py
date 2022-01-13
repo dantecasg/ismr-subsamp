@@ -41,11 +41,11 @@ def detrend(x):
 # ============================================================================ #
 
 # General parameters
-datapath = "../../../data/"
+datapath = "../data/"
 
 # Load data
 amm_eof = xr.load_dataset(datapath + "index/amm-asm_eof.nc")["left eofs"]
-sst_fil = xr.load_dataset(datapath + "SST/mpi-om-ens_sst_1981-2016-mon.nc")
+sst_fil = xr.load_dataset(datapath + "sst/mpi-om-ens_sst_1981-2016-mon.nc")
 
 # Selection of area
 sst_fil = sst_fil.assign_coords( lon = (((sst_fil.lon + 180) % 360) - 180) )
@@ -120,4 +120,4 @@ df = pd.DataFrame({
     "amm"  : np.concatenate(amm_ens)
     # "amm"  : amm_ens.reshape(nt*ne,1)
 })
-df.to_csv(r'../../../data/amm-mem_1981-2016-mon.csv', index = False)
+df.to_csv(r'../data/amm-mem_1981-2016-mon.csv', index = False)

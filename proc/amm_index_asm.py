@@ -55,14 +55,14 @@ def detrend(x):
 # PROCESS
 # --------------------------------------------------------------------------- #
 
-datapath = "../../../data/"
+datapath = "../data/"
 
 # --------------------------------------------------------------------------- #
 # Data
 
 # Load data
-data_sst = xr.load_dataset(datapath+"SST/mpi-om-asm_sst_1981-2016-mon.nc")
-data_wnd = xr.load_dataset(datapath+"wind/mpi-echam-asm_uv10m_1981-2016_amm-reg-1p0.nc")
+data_sst = xr.load_dataset(datapath+"sst/mpi-om-asm_sst_1981-2016-mon.nc")
+data_wnd = xr.load_dataset(datapath+"wind/echam6-asm_uv10m_1981-2016_amm-reg-1p0.nc")
 
 # Re-ordering coordinates
 # data_sst = data_sst.reindex(lat=list(reversed(data_sst.lat)))
@@ -203,7 +203,7 @@ df = pd.DataFrame({
     "time" : sst_fin["time"].values,
     "amm"  : sst_mca,
 })
-df.to_csv(r'../../../data/index/amm-asm_1981-2016-mon.csv', index = False)
+df.to_csv(r'../data/index/amm-asm_1981-2016-mon.csv', index = False)
 
 # Exporting first EOF from SST
-eof["left"][:,:,0].to_netcdf("../../../data/index/amm-asm_eof.nc")
+eof["left"][:,:,0].to_netcdf(datapath+"index/amm-asm_eof.nc")
