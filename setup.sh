@@ -49,6 +49,8 @@ julia --project=../ data_index.jl wio
 julia --project=../ data_index.jl wyi
 
 # Calculate AMM index
+./wind.sh amm
+
 python3 amm_index_obs.py
 python3 amm_index_asm.py
 python3 amm_index_mem.py

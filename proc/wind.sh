@@ -95,11 +95,11 @@ case $1 in
         rm temp*
         ;;
 
-    amm) # AMM assimilation data
+    ammasm) # AMM assimilation data
         data="/work/uo1075/u241265/post_defense/monsson_subsampling/MR30_assimilation/dante/asOEffESIP_r1i1p1-MR_echam6_echam_uv10_dm_1980_2017.nc"
         area="-75,15,-21,32"
-        out="echam6-asm_uv10m_1981-2016_amm-reg-1p0.nc"
-        cdo -sellonlatbox,${area} -remapbil,r180x90 -monmean -selyear,1981/2016 -chname,var165,uwind -chname,var166,vwind ${data} ${ruta}/${out}
+        out=${ruta}"/echam6-asm_uv10m_1981-2016_amm-reg-1p0.nc"
+        cdo -sellonlatbox,${area} -remapbil,r180x90 -monmean -selyear,1981/2016 -chname,var165,uwind -chname,var166,vwind ${data} ${out}
 
     *) # Default
         echo "Ninguna opcion seleccionada"
