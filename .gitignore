@@ -1,9 +1,3 @@
 *.png
 notes.md
 data/
-proc/amm_index_asm.py
-proc/amm_index_mem.py
-proc/amm_index_obs.py
-proc/prec_spt_JJAS.sh
-proc/wind_pre-proc.sh
-proc/wio_idx.sh
