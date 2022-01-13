@@ -100,6 +100,7 @@ case $1 in
         area="-75,15,-21,32"
         out=${ruta}"/echam6-asm_uv10m_1981-2016_amm-reg-1p0.nc"
         cdo -sellonlatbox,${area} -remapbil,r180x90 -monmean -selyear,1981/2016 -chname,var165,uwind -chname,var166,vwind ${data} ${out}
+        ;;
 
     *) # Default
         echo "Ninguna opcion seleccionada"
