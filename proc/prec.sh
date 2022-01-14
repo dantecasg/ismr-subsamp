@@ -47,25 +47,45 @@ case $1 in
         ;;
 esac
 
-# Selecting type of methodology
+# Selecting time evaluation
 case $2 in
     month) # Monthly climatology as time series
-        out=${outpre}"_cli-mon_ts.nc"
+        tim="_cli-mon"
         cdo -ymonmean -selyear,1981/2010 ${data} "pre.nc"
         ;;
 
     jjas) # JJAS time series
-        out=${outpre}"_1981-2016-JJAS_ts.nc"
+        tim="_1981-2016-JJAS"
         cdo -yearmean -selseason,JJAS -selyear,1981/2016 ${data} "pre.nc"
         ;;
 
     *) # Default
-        echo "No method was selected"
+        echo "No time scale was selected"
         exit
         ;;
 esac
 
-cdo -merge pre.nc ${mask} "mask.nc"
-cdo --reduce_dim -fldmean -setctomiss,0 -chname,pp,precip -selname,pp -expr,"pp="$vari"*mask_array" "mask.nc" ${out}
-rm "pre.nc" "mask.nc"
+# Selecting methodology
+case $3 in
+    ts) # Time series
+        met="_ts.nc"
+        out=${outpre}${tim}${met}
+        cdo -merge pre.nc ${mask} "mask.nc"
+        cdo --reduce_dim -fldmean -setctomiss,0 -chname,pp,precip -selname,pp -expr,"pp="$vari"*mask_array" "mask.nc" ${out}
+        rm "pre.nc" "mask.nc"
+        ;;
+
+    spt) # Spatial
+        met="_spt.nc"
+        out=${outpre}${tim}${met}
+        cdo -remapbil,r180x90 "pre.nc" ${out}
+        rm "pre.nc"
+        ;;
+
+    *) # Default
+        echo "No methodology was selected"
+        exit
+        ;;
+esac
+
 

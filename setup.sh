@@ -15,6 +15,7 @@
 mkdir data
 mkdir data/sst data/prec data/wind data/index
 mkdir data/mask
+mkdir data/shp
 mkdir img
 mkdir img/subsamp
 
@@ -27,17 +28,21 @@ cp $ruta"/masks/india_mask_GPCP.nc" "../data/mask/"
 cp $ruta"/masks/india_mask_MR30.nc" "../data/mask/"
 cp $ruta"/GPCP/GPCP__V2_3__PRECIP__2.5x2.5_sel.nc" "../data/prec/"
 cp $ruta"/SST/noaa-oisst_sst_1982-2021-mon.nc" "../data/sst/"
-cp $ruta"/wind/era5_uwind_1981-2016_lev-200-850.nc" "../data/wind/"
 cp $ruta"/SST/noaa-ersstv5_sst_1854-2021-mon_2p5.nc" "../data/sst/"
+cp $ruta"/wind/era5_uwind_1981-2016_lev-200-850.nc" "../data/wind/"
 cp $ruta"/wind/ncep-ncar_uwind_1948-2021-mon_10m.nc" "../data/wind/"
 cp $ruta"/wind/ncep-ncar_vwind_1948-2021-mon_10m.nc" "../data/wind/"
+cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 
 # Precipitation time series
-./prec_ts.sh obs month
-./prec_ts.sh asm month
-./prec_ts.sh ens month
-./prec_ts.sh obs jjas
-./prec_ts.sh ens jjas
+./prec.sh obs month ts
+./prec.sh asm month ts
+./prec.sh ens month ts
+./prec.sh obs jjas ts
+./prec.sh ens jjas ts
+# Precipitation spatial data
+./prec.sh obs jjas spt
+./prec.sh asm jjas spt
 
 # Sea surface data for indexes calculation
 ./sst_spt.sh obs month
