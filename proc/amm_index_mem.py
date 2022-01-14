@@ -120,4 +120,4 @@ df = pd.DataFrame({
     "amm"  : np.concatenate(amm_ens)
     # "amm"  : amm_ens.reshape(nt*ne,1)
 })
-df.to_csv(r'../data/amm-mem_1981-2016-mon.csv', index = False)
+df.to_csv(r'../data/index/amm-mem_1981-2016-mon.csv', index = False)
