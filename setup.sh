@@ -8,10 +8,15 @@
 # Date: 2021-12-23
 # -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
+# Data processing
+
 # Creating directories
 mkdir data
 mkdir data/sst data/prec data/wind data/index
 mkdir data/mask
+mkdir img
+mkdir img/subsamp
 
 # Changing directory
 cd proc/
@@ -31,6 +36,8 @@ cp $ruta"/wind/ncep-ncar_vwind_1948-2021-mon_10m.nc" "../data/wind/"
 ./prec_ts.sh obs month
 ./prec_ts.sh asm month
 ./prec_ts.sh ens month
+./prec_ts.sh obs jjas
+./prec_ts.sh ens jjas
 
 # Sea surface data for indexes calculation
 ./sst_spt.sh obs month
@@ -49,7 +56,15 @@ julia --project=../ data_index.jl wio
 julia --project=../ data_index.jl wyi
 
 # Calculate AMM index
+# It depends on the version of python, correct as needed
 ./wind.sh ammasm
-python3 amm_index_obs.py
-python3 amm_index_asm.py
-python3 amm_index_mem.py
+python3.9 amm_index_obs.py
+python3.9 amm_index_asm.py
+python3.9 amm_index_mem.py
+
+# ------------------------------------------------------------------------------
+# Analysis
+
+
+# ------------------------------------------------------------------------------
+# Notebooks - Pluto
