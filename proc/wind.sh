@@ -72,10 +72,10 @@ case $1 in
         out2=${ruta}"/echam6-asm_uwind_1981-2016-mon_lev-850.nc"
         
         cdo --reduce_dim -remapbil,r180x90 -monmean -selyear,1981/2016 -chname,var131,uwind -selname,var131 ${data} temp.nc
-        ncks -O -d plev,1 -F temp.nc ${out1}
-        ncks -O -d plev,2 -F temp.nc ${out2}
-        # ncwa -a plev temp_1.nc ${out1}
-        # ncwa -a plev temp_2.nc ${out2}
+        ncks -O -d plev,1 -F temp.nc temp_1.nc
+        ncks -O -d plev,2 -F temp.nc temp_2.nc
+        ncwa -a plev temp_1.nc ${out1}
+        ncwa -a plev temp_2.nc ${out2}
         rm temp*
         ;;
 
