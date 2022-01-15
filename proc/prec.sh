@@ -78,8 +78,14 @@ case $3 in
     spt) # Spatial
         met="_spt.nc"
         out=${outpre}${tim}${met}
-        cdo -remapbil,r180x90 "pre.nc" ${out}
-        rm "pre.nc"
+        if [ $1 = "obs" ]
+        then
+            mv "pre.nc" ${out}
+        else
+            obsfile=${ruta}"/prec/GPCP__V2_3__PRECIP__2.5x2.5_sel.nc"
+            cdo -remapbil,${obsfile} -chname,${vari},precip "pre.nc" ${out}
+            rm "pre.nc"
+        fi
         ;;
 
     *) # Default

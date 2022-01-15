@@ -43,6 +43,7 @@ cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 # Precipitation spatial data
 ./prec.sh obs jjas spt
 ./prec.sh asm jjas spt
+./prec.sh ens jjas spt
 
 # Sea surface data for indexes calculation
 ./sst_spt.sh obs month
