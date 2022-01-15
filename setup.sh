@@ -17,7 +17,7 @@ mkdir data/sst data/prec data/wind data/index
 mkdir data/mask
 mkdir data/shp
 mkdir img
-mkdir img/subsamp
+mkdir img/subsamp img/corr
 
 # Changing directory
 cd proc/
@@ -39,6 +39,7 @@ cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 ./prec.sh asm month ts
 ./prec.sh ens month ts
 ./prec.sh obs jjas ts
+./prec.sh asm jjas ts
 ./prec.sh ens jjas ts
 # Precipitation spatial data
 ./prec.sh obs jjas spt
