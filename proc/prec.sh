@@ -49,9 +49,14 @@ esac
 
 # Selecting time evaluation
 case $2 in
-    month) # Monthly climatology as time series
+    monthcli) # Monthly climatology as time series
         tim="_cli-mon"
         cdo -ymonmean -selyear,1981/2010 ${data} "pre.nc"
+        ;;
+
+    monthstd) # Monthly standar deviation
+        tim="_sdt-mon"
+        cdo -ymonstd  -selyear,1981/2010 ${data} "pre.nc"
         ;;
 
     jjas) # JJAS time series
