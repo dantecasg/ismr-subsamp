@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# Setup directories for the project.
+# Setup directories, prepare data and run scripts for the project.
 # This script requires 'cdo' and 'ncks' (by doing `conda activate py39`)
 #
 # Author: Dante T. Castro Garro
-# Date: 2021-12-23
+# Date: 2022-01-16
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
@@ -17,7 +17,7 @@ mkdir data/sst data/prec data/wind data/index
 mkdir data/mask
 mkdir data/shp
 mkdir img
-mkdir img/subsamp img/corr img/clim
+mkdir img/subsamp img/corr img/clim img/sst
 
 # Changing directory
 cd proc/
@@ -33,6 +33,7 @@ cp $ruta"/wind/era5_uwind_1981-2016_lev-200-850.nc" "../data/wind/"
 cp $ruta"/wind/ncep-ncar_uwind_1948-2021-mon_10m.nc" "../data/wind/"
 cp $ruta"/wind/ncep-ncar_vwind_1948-2021-mon_10m.nc" "../data/wind/"
 cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
+cp $ruta"/shp/ne_110m_land.*" "../data/shp/"
 
 # Precipitation time series
 ./prec.sh obs monthcli ts
@@ -52,9 +53,13 @@ cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 ./prec.sh asm monthstd spt
 
 # Sea surface data for indexes calculation
-./sst_spt.sh obs month
-./sst_spt.sh asm month
-./sst_spt.sh ens month
+./sst.sh obs month
+./sst.sh asm month
+./sst.sh ens month
+# Seas surface JJA climatology
+./sst.sh obs jja
+./sst.sh asm jja
+./sst.sh ens jja
 
 # Winds for the calculation of Webster Yang Index
 ./wind.sh era5
@@ -68,7 +73,7 @@ julia --project=../ data_index.jl wio
 julia --project=../ data_index.jl wyi
 
 # Calculate AMM index
-# It depends on the version of python, correct as needed
+# It depends on the version of python, change it if needed
 ./wind.sh ammasm
 python3.9 amm_index_obs.py
 python3.9 amm_index_asm.py
@@ -76,7 +81,28 @@ python3.9 amm_index_mem.py
 
 # ------------------------------------------------------------------------------
 # Analysis
-
+cd ../nb
+julia --project=../ nb_subsamp.jl
+julia --project=../ nb_rltn.jl
+julia --project=../ nb_clim.jl
+julia --project=../ nb_sst.jl
 
 # ------------------------------------------------------------------------------
 # Notebooks - Pluto
+#
+# The notebooks have the same content as the Analysis scripts, but they can be 
+# interactively run and modified (the same way as it is done with Jupyter).
+# 
+# For the notebooks follow this steps:
+# 1) Access Julia activating the project (this github repo):
+# julia --project=.
+#
+# 2) Install Pluto library (skip to step 3 if already installed):
+# using Pkg; Pkg.add("Pluto")
+#
+# 3) Load Pluto and excecute
+# using Pluto
+# Pluto.run()
+#
+# After this, a webpage should open where you can look for the notebooks and 
+# load them.
