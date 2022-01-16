@@ -17,7 +17,7 @@ mkdir data/sst data/prec data/wind data/index
 mkdir data/mask
 mkdir data/shp
 mkdir img
-mkdir img/subsamp img/corr
+mkdir img/subsamp img/corr img/clim
 
 # Changing directory
 cd proc/
