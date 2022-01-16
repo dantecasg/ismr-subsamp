@@ -55,7 +55,7 @@ case $2 in
         ;;
 
     monthstd) # Monthly standar deviation
-        tim="_sdt-mon"
+        tim="_std-mon"
         cdo -ymonstd  -selyear,1981/2010 ${data} "pre.nc"
         ;;
 

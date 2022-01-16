@@ -35,9 +35,9 @@ cp $ruta"/wind/ncep-ncar_vwind_1948-2021-mon_10m.nc" "../data/wind/"
 cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 
 # Precipitation time series
-./prec.sh obs month ts
-./prec.sh asm month ts
-./prec.sh ens month ts
+./prec.sh obs monthcli ts
+./prec.sh asm monthcli ts
+./prec.sh ens monthcli ts
 ./prec.sh obs jjas ts
 ./prec.sh asm jjas ts
 ./prec.sh ens jjas ts
@@ -45,6 +45,11 @@ cp $ruta"/shp/ne_110m_coastline.*" "../data/shp/"
 ./prec.sh obs jjas spt
 ./prec.sh asm jjas spt
 ./prec.sh ens jjas spt
+# Precipitation monthly climatology
+./prec.sh obs monthcli spt
+./prec.sh asm monthcli spt
+./prec.sh obs monthstd spt
+./prec.sh asm monthstd spt
 
 # Sea surface data for indexes calculation
 ./sst_spt.sh obs month
