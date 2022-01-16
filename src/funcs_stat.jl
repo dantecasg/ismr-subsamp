@@ -21,7 +21,7 @@
 # - autocor -> consider autcorrelation
 # ........................................................................... #
 # Notes:
-# - pvalue calculation based on `hypothesisTests.CorrelationTest` and 
+# - pvalue calculation based on `hypothesisTests.CorrelationTest` and
 # https://www.statology.org/p-value-correlation-excel/
 
 function sptCor(x, y; pval = false, sig = 0.05, autocor = false)
@@ -34,12 +34,14 @@ function sptCor(x, y; pval = false, sig = 0.05, autocor = false)
 
     if nd == 1
         y_new = convert(Vector{Float64}, y)
-        pen_y = autocor ? autoCorLevel(y_new, sig) : 0 # Convert from a vector type Float + Missing to just Float is necessary
+        pen_y = autocor ? autoCorLevel(y_new, sig) : 0
     end
-    
+
     for i in 1:nx, j in 1:ny
         
-        if nd > 1; y_new = convert(Vector{Float64}, y[i,j,:]); end # Convert from a vector type Float + Missing to just Float is necessary
+        if nd > 1 && all(y -> !ismissing(y), y[i,j,:]) # Convert from a vector type Float + Missing to just Float if necessary
+            y_new = convert(Vector{Float64}, y[i,j,:])
+        end
         
         if any(x -> !ismissing(x), x[i,j,:]) && any(x -> !ismissing(x), y_new)
             
