@@ -51,12 +51,12 @@ esac
 case $2 in
     monthcli) # Monthly climatology as time series
         tim="_cli-mon"
-        cdo -ymonmean -selyear,1981/2010 ${data} "pre.nc"
+        cdo -ymonmean -monmean -selyear,1981/2010 ${data} "pre.nc"
         ;;
 
     monthstd) # Monthly standar deviation
         tim="_std-mon"
-        cdo -ymonstd  -selyear,1981/2010 ${data} "pre.nc"
+        cdo -ymonstd  -monmean -selyear,1981/2010 ${data} "pre.nc"
         ;;
 
     jjas) # JJAS time series
