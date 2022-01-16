@@ -16,11 +16,23 @@ This is the list of libraries used in Julia:
 
 - Statistics
 
+- Distributions
+
 - DataFrames
 
 - Dates
 
 - CSV
+
+- Plots
+
+- ColorSchemes
+
+- StatsPlots
+
+- Shapefile
+
+- HypothesisTests
 
 And this is the list of Python libraries:
 
