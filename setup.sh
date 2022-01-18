@@ -81,11 +81,11 @@ python3.9 amm_index_mem.py
 
 # ------------------------------------------------------------------------------
 # Analysis
-cd ../nb
-julia --project=../ nb_subsamp.jl
-julia --project=../ nb_rltn.jl
-julia --project=../ nb_clim.jl
-julia --project=../ nb_sst.jl
+cd ../anl
+julia --project=../ subsamp.jl
+julia --project=../ rltn.jl
+julia --project=../ clim.jl
+julia --project=../ sst.jl
 
 # ------------------------------------------------------------------------------
 # Notebooks - Pluto
